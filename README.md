@@ -28,12 +28,6 @@ Aplicação para análise de dados de saúde mental global, com visualizações 
 
 ### 1. Download dos Dados
 
-Primeiro, baixe os dados necessários:
-
-\`\`\`bash
-python data/download_data.py
-\`\`\`
-
 ### 2. Backend (Python/FastAPI)
 
 \`\`\`bash

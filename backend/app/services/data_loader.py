@@ -4,7 +4,8 @@ from typing import Dict, List, Optional, Union
 from pathlib import Path
 
 # Caminho base para os dados
-DATA_DIR = Path(__file__).parents[3].parent / "data" / "raw"
+# Resolve o diretório "data/raw" na raiz do repositório
+DATA_DIR = Path(__file__).resolve().parents[3] / "data" / "raw"
 
 def load_dataset(dataset_id: str) -> pd.DataFrame:
     """
@@ -20,14 +21,15 @@ def load_dataset(dataset_id: str) -> pd.DataFrame:
         FileNotFoundError: Se o arquivo não for encontrado
     """
     # Mapeamento de IDs para nomes de arquivos
+    # Os arquivos mantêm os nomes originais utilizados no repositório
     dataset_mapping = {
-        "mental-illnesses-prevalence": "mental-illnesses-prevalence.csv",
-        "burden-disease-mental-illness": "burden-disease-mental-illness.csv",
-        "depression-prevalence-coverage": "depression-prevalence-coverage.csv",
-        "mental-illnesses-coverage": "mental-illnesses-coverage.csv",
-        "anxiety-treatment-gap": "anxiety-treatment-gap.csv",
-        "us-depressive-symptoms": "us-depressive-symptoms.csv",
-        "countries-with-data": "countries-with-data.csv"
+        "mental-illnesses-prevalence": "1- mental-illnesses-prevalence.csv",
+        "burden-disease-mental-illness": "2- burden-disease-from-each-mental-illness(1).csv",
+        "depression-prevalence-coverage": "3- adult-population-covered-in-primary-data-on-the-prevalence-of-major-depression.csv",
+        "mental-illnesses-coverage": "4- adult-population-covered-in-primary-data-on-the-prevalence-of-mental-illnesses.csv",
+        "anxiety-treatment-gap": "5- anxiety-disorders-treatment-gap.csv",
+        "us-depressive-symptoms": "6- depressive-symptoms-across-us-population.csv",
+        "countries-with-data": "7- number-of-countries-with-primary-data-on-prevalence-of-mental-illnesses-in-the-global-burden-of-disease-study.csv",
     }
     
     if dataset_id not in dataset_mapping:
